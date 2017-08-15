@@ -1,4 +1,4 @@
-define(['jquery', 'template'], function($, template) {
+define(['jquery', 'template', "bootstrap"], function($, template) {
     $.ajax({
         url: '/api/teacher',
         type: 'get',
@@ -11,7 +11,22 @@ define(['jquery', 'template'], function($, template) {
         }
     })
 
-    $("#tc_list_tBody").on('click', 'a', function() {
-        alert(123);
+    $("#tc_list_tBody").on('click', 'a.check-info', function() {
+        var id = $(this).parent().data('id');
+        $.ajax({
+            url: '/api/teacher/view',
+            type: 'get',
+            data: {
+                tc_id: id,
+            },
+            success: function(res) {
+                if (res.code == 200) {
+
+                    var htmlStr = template("tc_info_tpl", res.result);
+                    $("#teacherModal tbody").html(htmlStr);
+                    $("#teacherModal").modal();
+                }
+            }
+        })
     })
 })
