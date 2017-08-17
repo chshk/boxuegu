@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'region'], function($, template, region) {
+define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh'], function($, template, region, uploadify, datepicker, datepickerzh) {
     $.ajax({
         url: '/api/teacher/profile',
         type: 'get',
@@ -11,7 +11,28 @@ define(['jquery', 'template', 'region'], function($, template, region) {
                 $('#region').region({
                     url: '/views/public/assets/jquery-region/region.json'
                 });
-                // 
+                // 照片上传：
+                $('#upfile').uploadify({
+                    'swf': '/views/public/assets/uploadify/uploadify.swf',
+                    'uploader': '/api/uploader/avatar', //提交的接口
+                    'width': 120,
+                    'height': 120,
+                    'buttonText': '',
+                    'fileObjName': 'tc_avatar', //上传到服务器的文件名，也就是当前的input标签的name属性值
+                    onUploadSuccess: function(file, data, response) {
+                        // var obj = JSON.parse(data);
+                        // // obj.result.path
+                        //  // 图片上传成功之后，服务器会返回一个图片在服务器的地址
+                        // $('.preview img').attr('src',obj.result.path);
+                        $('.preview img').attr('src', JSON.parse(data).result.path);
+                    }
+                });
+
+                // 日期插件：
+                $('input[name=tc_join_date],input[name=tc_birthday]').datepicker({
+                    format: 'yyyy/mm/dd',
+                    language: 'zh-CN'
+                })
             }
         }
     })

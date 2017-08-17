@@ -6,7 +6,9 @@ require.config({
         'bootstrap': 'assets/bootstrap/js/bootstrap.min',
         'template': 'assets/artTemplate/template',
         'nprogress': 'assets/nprogress/nprogress',
-        'uploadify': 'assets/uploadify/uploadify',
+        'uploadify': 'assets/uploadify/jquery.uploadify',
+        'datepicker': 'assets/bootstrap-datepicker/js/bootstrap-datepicker',
+        'datepickerzh': 'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         'region': 'assets/jquery-region/jquery.region',
         'form': 'assets/jquery-form/jquery.form',
         'ckeditor': 'assets/ckeditor/ckeditor',
@@ -20,6 +22,9 @@ require.config({
         uploadify: {
             deps: ['jquery']
         },
+        datepickerzh: {
+            deps: ['jquery']
+        }
 
     }
 });
