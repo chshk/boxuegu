@@ -6,14 +6,21 @@ require.config({
         'bootstrap': 'assets/bootstrap/js/bootstrap.min',
         'template': 'assets/artTemplate/template',
         'nprogress': 'assets/nprogress/nprogress',
-        //      'common': 'js/common'
+        'uploadify': 'assets/uploadify/uploadify',
+        'region': 'assets/jquery-region/jquery.region',
+        'form': 'assets/jquery-form/jquery.form',
+        'ckeditor': 'assets/ckeditor/ckeditor',
         'common': 'js/dashboard/common',
         'login': 'js/dashboard/login'
     },
     shim: {
         bootstrap: {
             deps: ['jquery']
-        }
+        },
+        uploadify: {
+            deps: ['jquery']
+        },
+
     }
 });
 require(['common']);
