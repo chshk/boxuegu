@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh'], function($, template, region, uploadify, datepicker, datepickerzh) {
+define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh', 'ckeditor'], function($, template, region, uploadify, datepicker, datepickerzh, CKEDITOR) {
     $.ajax({
         url: '/api/teacher/profile',
         type: 'get',
@@ -19,7 +19,7 @@ define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh
                     'height': 120,
                     'buttonText': '',
                     'fileObjName': 'tc_avatar', //上传到服务器的文件名，也就是当前的input标签的name属性值
-                    onUploadSuccess: function(file, data, response) {
+                    'onUploadSuccess': function(file, data, response) {
                         // var obj = JSON.parse(data);
                         // // obj.result.path
                         //  // 图片上传成功之后，服务器会返回一个图片在服务器的地址
@@ -30,8 +30,18 @@ define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh
 
                 // 日期插件：
                 $('input[name=tc_join_date],input[name=tc_birthday]').datepicker({
-                    format: 'yyyy/mm/dd',
-                    language: 'zh-CN'
+                        format: 'yyyy/mm/dd',
+                        language: 'zh-CN'
+                    })
+                    // 富文本：
+                CKEDITOR.replace('introduce', {
+                    toolbarGroups: [
+                        { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                        { name: 'links' },
+                        { name: 'document', groups: ['mode', 'document', 'doctools'] },
+                        { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                        { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'] }
+                    ]
                 })
             }
         }

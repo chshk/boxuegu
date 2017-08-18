@@ -24,8 +24,10 @@ require.config({
         },
         datepickerzh: {
             deps: ['jquery']
+        },
+        ckeditor: {
+            exports: 'CKEDITOR'
         }
-
     }
 });
 require(['common']);
