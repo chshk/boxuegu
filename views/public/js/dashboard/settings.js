@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh', 'ckeditor'], function($, template, region, uploadify, datepicker, datepickerzh, CKEDITOR) {
+define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh', 'ckeditor', 'form'], function($, template, region, uploadify, datepicker, datepickerzh, CKEDITOR, form) {
     $.ajax({
         url: '/api/teacher/profile',
         type: 'get',
@@ -47,5 +47,20 @@ define(['jquery', 'template', 'region', 'uploadify', 'datepicker', 'datepickerzh
         }
     })
 
-
+    // 保存按钮：
+    $('.settings').on('click', 'a.btnSave', function() {
+        alert(123)
+        $('#tc_introduce').val(CKEDITOR.instances.introduce.getData());
+        $('form').ajaxSubmit({
+            url: '/api/teacher/modify',
+            type: 'post',
+            success: function(info) {
+                if (info.code == 200) {
+                    alert('添加成功');
+                    location.href = '/views/course/add_step2'
+                }
+            }
+        })
+        return false;
+    })
 })

@@ -4,35 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <?php include '/views/common/css.html' ?>
+    <?php include '/views/common/css.html'?>
+    <link rel="stylesheet" href="/views/public/assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/views/public/assets/bootstrap-datepicker/css/bootstrap-datepicker.css">
 </head>
 
 <body>
     <!-- 侧边栏 -->
-    <?php include '/views/common/aside.html' ?>
+    <?php include '/views/common/aside.html'?>
     <!-- 主体 -->
     <div class="main">
         <div class="container-fluid">
             <!-- 头部 -->
-            <?php include '/views/common/head.html' ?>
+            <?php include '/views/common/head.html'?>
             <div class="body teacher">
                 <!-- 面包屑 -->
-
-
 
             </div>
         </div>
     </div>
 
-    <?php include '/views/common/script.html' ?>
-    <script type="template/html" id="tc_edit_tpl">
+    <?php include '/views/common/script.html'?>
+    <script type="template/html" id="tpl_tc_edit">
         <ol class="breadcrumb">
             <li><a href="javascript:;">讲师管理</a></li>
             <li class="active">{{title}}</li>
         </ol>
         <div class="teacher-add">
             <form action="" class="form-horizontal col-md-offset-2">
-                <input type="hidden" name="tc_id" value="{{tc_id}}">
+                <input type="hidden" value="{{tc_id}}" name="tc_id">
                 <div class="form-group">
                     <label for="" class="col-md-3 control-label">姓名</label>
                     <div class="col-md-4">
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label for="" class="col-md-3 control-label">入职时间</label>
                     <div class="col-md-4">
-                        <input type="text" name="tc_join_date" value="{{tc_join_date}}" class="form-control input-sm">
+                        <input type="text" value="{{tc_join_date}}" name="tc_join_date" class="form-control input-sm">
                     </div>
                 </div>
                 <div class="form-group">
@@ -58,7 +58,7 @@
                     <div class="col-md-2">
                         <select name="tc_type" class="form-control input-sm">
                             <option value="1" {{if tc_type==1}}selected{{/if}}>讲师</option>
-                            <option value="0" {{if tc_type==0}}>管理员</option>
+                            <option value="0" {{if tc_type==0}}selected{{/if}}>管理员</option>
                         </select>
                     </div>
                 </div>
@@ -66,24 +66,23 @@
                     <label for="" class="col-md-3 control-label">性别</label>
                     <div class="col-md-4">
                         <label class="radio-inline">
-                            <input type="radio" value="1" name="tc_gander" {{if tc_gender==1}}checked{{/if}}> 男
+                            <input type="radio" value="0" name="tc_gender" {{if tc_gender==0}}checked{{/if}}> 男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="0" {{if tc_gender==0}}checked{{/if}}> 女
+                            <input type="radio" value="1" name="tc_gender" {{if tc_gender==1}}checked{{/if}}> 女
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-7">
-                        <<button type="submit" class="btn btn-success btn-sm pull-right btnSave">{{saveBtnText}}</button>
+                        <button class="btnSave btn btn-success btn-sm pull-right"> {{saveBtnText}} </button>
                     </div>
                 </div>
             </form>
         </div>
     </script>
-
     <script>
-        require(['js/teacher/manager'])
+        require(['js/teacher/manager']);
     </script>
 </body>
 

@@ -11,6 +11,7 @@ require.config({
         'datepickerzh': 'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         'region': 'assets/jquery-region/jquery.region',
         'form': 'assets/jquery-form/jquery.form',
+        'utils': 'libs/utils',
         'ckeditor': 'assets/ckeditor/ckeditor',
         'common': 'js/dashboard/common',
         'login': 'js/dashboard/login'
